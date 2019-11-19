@@ -7,8 +7,7 @@
 #include <string.h>
 
 int main (int argc, char *argv[]) {
-  //recieve input
-	char directory[1000];
+  char directory[1000];
 	if (argc == 1) {
 		fgets(directory, sizeof(directory), stdin);
 		directory[strlen(directory) - 1] = '\0';
@@ -16,14 +15,12 @@ int main (int argc, char *argv[]) {
 	else {
 		strcpy(directory, argv[1]);
 	}
-
 	DIR *direct = opendir(directory);
 	long size = 0;
   if (errno > 0){
     printf("%s\n", strerror(errno));
     return 0;
-  } //if directory doesnt exist
-
+  }
 	struct dirent *file;
 	printf("\nINFORMATION REGARDING [%s]\n", directory);
 	while ((file = readdir(direct)) != NULL) {
